@@ -1,0 +1,74 @@
+models:
+  Association:
+    name: string
+    tax_id: string unique
+    business_name: string unique
+    address: string unique
+    email: string unique
+    timestamps: true
+
+  ManagesAssociation:
+    user_id: foreign:users.id onDelete:cascade
+    association_id: id foreign:associations onDelete:cascade
+    primary: user_id, association_id
+
+  AssociationPhone:
+    association_id: id foreign:associations onDelete:cascade
+    phone: string unique
+    description: text nullable
+
+  MemberAssociation:
+    user_id: foreign:users.id onDelete:cascade
+    association_id: id foreign:associations onDelete:cascade
+    status: enum:pending,accepted,rejected
+    primary: user_id, association_id
+
+  Category:
+    name: string unique
+
+  Product:
+    association_id: id foreign:associations onDelete:cascade
+    name: string
+    description: text nullable
+    price: decimal(10,2)
+    stock: integer
+    image: string nullable
+    category_id: id foreign:categories nullable
+
+  UserLikesProduct:
+    user_id: foreign:users.id onDelete:cascade
+    product_id: id foreign:products onDelete:cascade
+    primary: user_id, product_id
+
+  Order:
+    user_id: foreign:users.id onDelete:restrict
+    order_date: datetime
+    total: decimal(10,2)
+    status: enum:pending,paid,shipped,cancelled
+
+  OrderContainsProduct:
+    order_id: id foreign:orders onDelete:cascade
+    product_id: id foreign:products onDelete:cascade
+    quantity: integer
+    primary: order_id, product_id
+
+  Comment:
+    user_id: foreign:users.id onDelete:null nullable
+    product_id: id foreign:products onDelete:cascade
+    content: text nullable
+    rating: integer min:1 max:10
+    date: timestamp default:current
+
+  UserLikesComment:
+    user_id: foreign:users.id onDelete:restrict
+    comment_id: id foreign:comments onDelete:cascade
+    primary: user_id, comment_id
+
+  ContactForm:
+    user_id: foreign:users.id nullable
+    name: string nullable
+    email: string
+    message: text
+    sent_at: timestamp default:current
+
+seeders: Association, Category, Product, Order, Comment
