@@ -16,7 +16,7 @@ jobs:
       with:
         host: 200.234.232.44
         port: 22
-        username: gastbr
+        username: gaston
         key: ${{ secrets.PRIVATE_KEY }}
         script: |
           cd /var/www/html/majosfera-back
