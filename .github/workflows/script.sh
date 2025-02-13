@@ -12,6 +12,6 @@ echo 'chmod';sudo -u www-data chmod -R 775 /var/www/html/majosfera-back
 
 echo 'artisan route:clear';php artisan route:clear
 
-echo 'php reload';sudo -u www-data systemctl reload php8.2-fpm
+echo 'php reload';sudo systemctl reload php8.2-fpm
 
 echo 'Deploy completed'
