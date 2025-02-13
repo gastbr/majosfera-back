@@ -2,13 +2,13 @@ echo 'Start deploy'
 
 echo 'cd'; cd /var/www/html/majosfera-back
 
-echo 'git pull'; sudo -u www-data git pull origin prod
+echo 'git pull'; git pull origin prod
 
-echo 'npm run build'; sudo -u www-data npm run build
+echo 'composer install'; composer install
 
-echo 'chown';sudo -u www-data chown -R www-data /var/www/html/majosfera-back
+echo 'npm install'; npm install
 
-echo 'chmod';sudo -u www-data chmod -R 775 /var/www/html/majosfera-back
+echo 'npm run build'; npm run build
 
 echo 'artisan route:clear';php artisan route:clear
 
