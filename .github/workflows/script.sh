@@ -10,7 +10,7 @@ echo 'npm install'; npm install
 
 echo 'npm run build'; npm run build
 
-echo 'chown'; chown -R www-data:www-data /var/www/html/majosfera-back
+echo 'chown/chmod'; chown -R www-data:www-data /var/www/html/majosfera-back; chmod -R 777 /var/www/html/majosfera-back
 
 echo 'artisan route:clear'; php artisan route:clear
 
