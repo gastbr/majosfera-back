@@ -17,4 +17,4 @@ jobs:
         port: 2222
         username: gaston
         key: ${{ secrets.PRIVATE_KEY }}
-        script: "./deploy.sh"
+        script: "./script.sh"
