@@ -17,4 +17,4 @@ jobs:
         port: 2222
         username: gaston
         key: ${{ secrets.PRIVATE_KEY }}
-        script: "./script.sh"
+        script: "/./var/www/html/majosfera-back/.github/workflows/script.sh"

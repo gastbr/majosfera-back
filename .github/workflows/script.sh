@@ -14,7 +14,7 @@ php artisan route:clear
 
 echo 'php reload'
 
-sudo systemctl reload php8.2-fpm
+sudo -u www-data systemctl reload php8.2-fpm
 
 echo 'npm install'
 
