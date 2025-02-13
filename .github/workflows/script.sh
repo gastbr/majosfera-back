@@ -1,27 +1,21 @@
 echo 'Start deploy'
 
-echo 'cd'
+echo 'cd'; cd /var/www/html/majosfera-back
 
-cd /var/www/html/majosfera-back
+echo 'git pull'; sudo -u www-data git pull origin prod
 
-echo 'git pull'
+echo 'composer install'; sudo -u www-data composer install
 
-sudo -u www-data git pull origin prod
+echo 'npm install'; sudo -u www-data npm install
 
-echo 'artisan route:clear'
+echo 'npm run build'; sudo -u www-data npm run build
 
-php artisan route:clear
+echo 'chown';sudo -u www-data chonw -R www-data:www-data /var/www/html/majosfera-back
 
-echo 'php reload'
+echo 'chmod';sudo -u www-data chmod -R 775 /var/www/html/majosfera-back
 
-sudo -u www-data systemctl reload php8.2-fpm
+echo 'artisan route:clear';php artisan route:clear
 
-echo 'npm install'
-
-sudo -u www-data npm install
-
-echo 'npm run build'
-
-sudo -u www-data npm run build
+echo 'php reload';sudo -u www-data systemctl reload php8.2-fpm
 
 echo 'Deploy completed'
