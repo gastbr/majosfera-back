@@ -6,7 +6,7 @@ echo 'git pull'; sudo -u www-data git pull origin prod
 
 echo 'npm run build'; sudo -u www-data npm run build
 
-echo 'chown';sudo -u www-data chonw -R www-data /var/www/html/majosfera-back
+echo 'chown';sudo -u www-data chown -R www-data /var/www/html/majosfera-back
 
 echo 'chmod';sudo -u www-data chmod -R 775 /var/www/html/majosfera-back
 
