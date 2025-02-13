@@ -1,13 +1,27 @@
-echo "Start deploy"
+echo 'Start deploy'
+
+echo 'cd'
 
 cd /var/www/html/majosfera-back
 
-git pull origin prod
+echo 'git pull'
+
+sudo -u www-data git pull origin prod
+
+echo 'artisan route:clear'
 
 php artisan route:clear
 
-sudo service php8.3-fpm reload
+echo 'php reload'
 
-npm run build
+sudo systemctl reload php8.2-fpm
 
-echo "Deploy completed"
+echo 'npm install'
+
+sudo -u www-data npm install
+
+echo 'npm run build'
+
+sudo -u www-data npm run build
+
+echo 'Deploy completed'
