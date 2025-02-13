@@ -17,7 +17,4 @@ jobs:
         port: 2222
         username: gaston
         key: ${{ secrets.PRIVATE_KEY }}
-        script: |
-          cd /var/www/html/majosfera-back
-          sudo -u www-data git pull origin prod
-          sudo -u www-data npm run build
+        script: "echo 'Start deploy'; cd /var/www/html/majosfera-back; sudo -u www-data git pull origin prod; php artisan route:clear; sudo service php8.3-fpm reload; sudo -u www-data npm run build; echo 'Deploy completed'"
