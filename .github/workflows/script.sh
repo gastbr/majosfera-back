@@ -4,10 +4,6 @@ echo 'cd'; cd /var/www/html/majosfera-back
 
 echo 'git pull'; sudo -u www-data git pull origin prod
 
-echo 'composer install'; sudo -u www-data composer install
-
-echo 'npm install'; sudo -u www-data npm install
-
 echo 'npm run build'; sudo -u www-data npm run build
 
 echo 'chown';sudo -u www-data chonw -R www-data:www-data /var/www/html/majosfera-back
