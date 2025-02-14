@@ -18,6 +18,6 @@ chmod -R 775 /var/www/html/majosfera-back/bootstrap/cache;
 
 echo '==> artisan route:clear'; php artisan route:clear
 
-echo '==> php reload'; systemctl reload php8.2-fpm
+echo '==> php reload'; systemctl reload php8.3-fpm
 
 echo '==> Deploy completed'
