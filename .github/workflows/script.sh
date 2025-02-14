@@ -4,7 +4,7 @@ echo 'cd'; cd /var/www/html/majosfera-back
 
 echo 'git pull'; git restore .;git pull origin prod
 
-echo 'composer install'; sudo -u gaston composer install
+echo 'composer install'; sudo -u www-data composer install
 
 echo 'npm install'; npm install
 
