@@ -1,21 +1,20 @@
 name: deploy
 
 on:
-  workflow_dispatch:
   push:
     branches:
     - prod
 
 jobs:
   deploy:
-  name: Deploy to VPS
-  runs-on: ubuntu-22.04
-  steps:
-  - name: Deploy
-    uses: appleboy/ssh-action@v0.1.8
-    with:
-    host: 200.234.232.44
-    port: 22
-    username: gastbr
-    key: ${{secrets.PRIVATE_KEY}}
-    script: "cd /var/www/html/majosfera-back; git pull origin prod; npm run build"
+    name: Deploy to VPS
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Deploy
+      uses: appleboy/ssh-action@v0.1.8
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        port: 2222
+        username: ${{ secrets.VPS_USER }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        script: "sudo ${{ secrets.VPS_DEPLOY_DIR }}.github/workflows/script.sh"
