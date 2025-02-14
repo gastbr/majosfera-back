@@ -1,2 +1,56 @@
+created:
+    - database/factories/AssociationFactory.php
+    - database/factories/ManagesAssociationFactory.php
+    - database/factories/AssociationPhoneFactory.php
+    - database/factories/MemberAssociationFactory.php
+    - database/factories/CategoryFactory.php
+    - database/factories/ProductFactory.php
+    - database/factories/UserLikesProductFactory.php
+    - database/factories/OrderFactory.php
+    - database/factories/OrderContainsProductFactory.php
+    - database/factories/CommentFactory.php
+    - database/factories/UserLikesCommentFactory.php
+    - database/factories/ContactFormFactory.php
+    - database/migrations/2025_02_14_204906_create_associations_table.php
+    - database/migrations/2025_02_14_204907_create_manages_associations_table.php
+    - database/migrations/2025_02_14_204908_create_association_phones_table.php
+    - database/migrations/2025_02_14_204909_create_member_associations_table.php
+    - database/migrations/2025_02_14_204910_create_categories_table.php
+    - database/migrations/2025_02_14_204911_create_products_table.php
+    - database/migrations/2025_02_14_204912_create_user_likes_products_table.php
+    - database/migrations/2025_02_14_204913_create_orders_table.php
+    - database/migrations/2025_02_14_204914_create_order_contains_products_table.php
+    - database/migrations/2025_02_14_204915_create_comments_table.php
+    - database/migrations/2025_02_14_204916_create_user_likes_comments_table.php
+    - database/migrations/2025_02_14_204917_create_contact_forms_table.php
+    - app/Models/Association.php
+    - app/Models/ManagesAssociation.php
+    - app/Models/AssociationPhone.php
+    - app/Models/MemberAssociation.php
+    - app/Models/Category.php
+    - app/Models/Product.php
+    - app/Models/UserLikesProduct.php
+    - app/Models/Order.php
+    - app/Models/OrderContainsProduct.php
+    - app/Models/Comment.php
+    - app/Models/UserLikesComment.php
+    - app/Models/ContactForm.php
+    - database/seeders/AssociationSeeder.php
+    - database/seeders/CategorySeeder.php
+    - database/seeders/ProductSeeder.php
+    - database/seeders/OrderSeeder.php
+    - database/seeders/CommentSeeder.php
 models:
     User: { name: string, email: string, email_verified_at: 'timestamp nullable', password: string, remember_token: 'string:100 nullable' }
+    Association: { name: string, tax_id: 'string unique', business_name: 'string unique', address: 'string unique', email: 'string unique', timestamps: timestamps }
+    ManagesAssociation: { user_id: 'foreign:users.id onDelete:cascade', association_id: 'id foreign:associations onDelete:cascade', primary: 'user_id, association_id' }
+    AssociationPhone: { association_id: 'id foreign:associations onDelete:cascade', phone: 'string unique', description: 'text nullable' }
+    MemberAssociation: { user_id: 'foreign:users.id onDelete:cascade', association_id: 'id foreign:associations onDelete:cascade', status: 'enum:pending,accepted,rejected', primary: 'user_id, association_id' }
+    Category: { name: 'string unique' }
+    Product: { association_id: 'id foreign:associations onDelete:cascade', name: string, description: 'text nullable', price: 'decimal(10,2)', stock: integer, image: 'string nullable', category_id: 'id foreign:categories nullable' }
+    UserLikesProduct: { user_id: 'foreign:users.id onDelete:cascade', product_id: 'id foreign:products onDelete:cascade', primary: 'user_id, product_id' }
+    Order: { user_id: 'foreign:users.id onDelete:restrict', order_date: datetime, total: 'decimal(10,2)', status: 'enum:pending,paid,shipped,cancelled' }
+    OrderContainsProduct: { order_id: 'id foreign:orders onDelete:cascade', product_id: 'id foreign:products onDelete:cascade', quantity: integer, primary: 'order_id, product_id' }
+    Comment: { user_id: 'foreign:users.id onDelete:null nullable', product_id: 'id foreign:products onDelete:cascade', content: 'text nullable', rating: 'integer min:1 max:10', date: 'timestamp default:current' }
+    UserLikesComment: { user_id: 'foreign:users.id onDelete:restrict', comment_id: 'id foreign:comments onDelete:cascade', primary: 'user_id, comment_id' }
+    ContactForm: { user_id: 'foreign:users.id nullable', name: 'string nullable', email: string, message: text, sent_at: 'timestamp default:current' }
