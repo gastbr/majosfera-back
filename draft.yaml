@@ -57,7 +57,7 @@ models:
     product_id: id foreign:products onDelete:cascade
     content: text nullable
     rating: integer min:1 max:10
-    date: timestamp default:current
+    date: timestamp useCurrent
 
   UserLikesComment:
     user_id: foreign:users.id onDelete:restrict
@@ -69,6 +69,6 @@ models:
     name: string nullable
     email: string
     message: text
-    sent_at: timestamp default:current
+    sent_at: timestamp useCurrent
 
 seeders: Association, Category, Product, Order, Comment

@@ -11,18 +11,18 @@ created:
     - database/factories/CommentFactory.php
     - database/factories/UserLikesCommentFactory.php
     - database/factories/ContactFormFactory.php
-    - database/migrations/2025_02_14_204906_create_associations_table.php
-    - database/migrations/2025_02_14_204907_create_manages_associations_table.php
-    - database/migrations/2025_02_14_204908_create_association_phones_table.php
-    - database/migrations/2025_02_14_204909_create_member_associations_table.php
-    - database/migrations/2025_02_14_204910_create_categories_table.php
-    - database/migrations/2025_02_14_204911_create_products_table.php
-    - database/migrations/2025_02_14_204912_create_user_likes_products_table.php
-    - database/migrations/2025_02_14_204913_create_orders_table.php
-    - database/migrations/2025_02_14_204914_create_order_contains_products_table.php
-    - database/migrations/2025_02_14_204915_create_comments_table.php
-    - database/migrations/2025_02_14_204916_create_user_likes_comments_table.php
-    - database/migrations/2025_02_14_204917_create_contact_forms_table.php
+    - database/migrations/2025_02_15_193726_create_associations_table.php
+    - database/migrations/2025_02_15_193727_create_manages_associations_table.php
+    - database/migrations/2025_02_15_193728_create_association_phones_table.php
+    - database/migrations/2025_02_15_193729_create_member_associations_table.php
+    - database/migrations/2025_02_15_193730_create_categories_table.php
+    - database/migrations/2025_02_15_193731_create_products_table.php
+    - database/migrations/2025_02_15_193732_create_user_likes_products_table.php
+    - database/migrations/2025_02_15_193733_create_orders_table.php
+    - database/migrations/2025_02_15_193734_create_order_contains_products_table.php
+    - database/migrations/2025_02_15_193735_create_comments_table.php
+    - database/migrations/2025_02_15_193736_create_user_likes_comments_table.php
+    - database/migrations/2025_02_15_193737_create_contact_forms_table.php
     - app/Models/Association.php
     - app/Models/ManagesAssociation.php
     - app/Models/AssociationPhone.php
@@ -51,6 +51,6 @@ models:
     UserLikesProduct: { user_id: 'foreign:users.id onDelete:cascade', product_id: 'id foreign:products onDelete:cascade', primary: 'user_id, product_id' }
     Order: { user_id: 'foreign:users.id onDelete:restrict', order_date: datetime, total: 'decimal(10,2)', status: 'enum:pending,paid,shipped,cancelled' }
     OrderContainsProduct: { order_id: 'id foreign:orders onDelete:cascade', product_id: 'id foreign:products onDelete:cascade', quantity: integer, primary: 'order_id, product_id' }
-    Comment: { user_id: 'foreign:users.id onDelete:null nullable', product_id: 'id foreign:products onDelete:cascade', content: 'text nullable', rating: 'integer min:1 max:10', date: 'timestamp default:current' }
+    Comment: { user_id: 'foreign:users.id onDelete:null nullable', product_id: 'id foreign:products onDelete:cascade', content: 'text nullable', rating: 'integer min:1 max:10', date: 'timestamp useCurrent' }
     UserLikesComment: { user_id: 'foreign:users.id onDelete:restrict', comment_id: 'id foreign:comments onDelete:cascade', primary: 'user_id, comment_id' }
-    ContactForm: { user_id: 'foreign:users.id nullable', name: 'string nullable', email: string, message: text, sent_at: 'timestamp default:current' }
+    ContactForm: { user_id: 'foreign:users.id nullable', name: 'string nullable', email: string, message: text, sent_at: 'timestamp useCurrent' }

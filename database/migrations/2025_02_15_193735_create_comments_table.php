@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::create('contact_forms', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained();
-            $table->string('name')->nullable();
-            $table->string('email');
-            $table->text('message');
-            $table->timestamp('sent_at')->default('current');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('set null');
+            $table->foreignId('product_id')->constrained()->cascadeOnDelete();
+            $table->text('content')->nullable();
+            $table->integer('rating');
+            $table->timestamp('date')->useCurrent();
             $table->timestamps();
         });
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contact_forms');
+        Schema::dropIfExists('comments');
     }
 };
