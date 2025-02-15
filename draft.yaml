@@ -7,6 +7,11 @@ models:
     email: string unique
     timestamps: true
 
+  BelongsToAssociation:
+    user_id: foreign:users.id onDelete:cascade
+    association_id: id foreign:associations onDelete:cascade
+    primary: user_id, association_id
+
   ManagesAssociation:
     user_id: foreign:users.id onDelete:cascade
     association_id: id foreign:associations onDelete:cascade
@@ -71,4 +76,4 @@ models:
     message: text
     sent_at: timestamp useCurrent
 
-seeders: Association, Category, Product, Order, Comment
+seeders: User, Association, BelongsToAssociation, ManagesAssociation, AssociationPhone, MemberAssociation, Category, Product, UserLikesProduct, Order, OrderContainsProduct, Comment, UserLikesComment, ContactForm

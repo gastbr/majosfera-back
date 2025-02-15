@@ -2,16 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
+use App\Models\UserLikesComment;
 use Illuminate\Database\Seeder;
 
-class CategorySeeder extends Seeder
+class UserLikesCommentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Category::factory()->count(50)->create();
+        UserLikesComment::factory()->count(50)->create();
     }
 }

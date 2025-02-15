@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Association extends Model
 {
@@ -30,4 +31,28 @@ class Association extends Model
     protected $casts = [
         'id' => 'integer',
     ];
+
+    /**
+     * Get the users who manage the association.
+     */
+    public function managers(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'manages_associations');
+    }
+
+    /**
+     * Get the users who belong to the association.
+     */
+    public function members(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'belongs_to_associations');
+    }
+
+    /**
+     * Get the products for the association.
+     */
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class);
+    }
 }

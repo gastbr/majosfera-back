@@ -1,5 +1,6 @@
 created:
     - database/factories/AssociationFactory.php
+    - database/factories/BelongsToAssociationFactory.php
     - database/factories/ManagesAssociationFactory.php
     - database/factories/AssociationPhoneFactory.php
     - database/factories/MemberAssociationFactory.php
@@ -11,19 +12,21 @@ created:
     - database/factories/CommentFactory.php
     - database/factories/UserLikesCommentFactory.php
     - database/factories/ContactFormFactory.php
-    - database/migrations/2025_02_15_193726_create_associations_table.php
-    - database/migrations/2025_02_15_193727_create_manages_associations_table.php
-    - database/migrations/2025_02_15_193728_create_association_phones_table.php
-    - database/migrations/2025_02_15_193729_create_member_associations_table.php
-    - database/migrations/2025_02_15_193730_create_categories_table.php
-    - database/migrations/2025_02_15_193731_create_products_table.php
-    - database/migrations/2025_02_15_193732_create_user_likes_products_table.php
-    - database/migrations/2025_02_15_193733_create_orders_table.php
-    - database/migrations/2025_02_15_193734_create_order_contains_products_table.php
-    - database/migrations/2025_02_15_193735_create_comments_table.php
-    - database/migrations/2025_02_15_193736_create_user_likes_comments_table.php
-    - database/migrations/2025_02_15_193737_create_contact_forms_table.php
+    - database/migrations/2025_02_15_201920_create_associations_table.php
+    - database/migrations/2025_02_15_201921_create_belongs_to_associations_table.php
+    - database/migrations/2025_02_15_201922_create_manages_associations_table.php
+    - database/migrations/2025_02_15_201923_create_association_phones_table.php
+    - database/migrations/2025_02_15_201924_create_member_associations_table.php
+    - database/migrations/2025_02_15_201925_create_categories_table.php
+    - database/migrations/2025_02_15_201926_create_products_table.php
+    - database/migrations/2025_02_15_201927_create_user_likes_products_table.php
+    - database/migrations/2025_02_15_201928_create_orders_table.php
+    - database/migrations/2025_02_15_201929_create_order_contains_products_table.php
+    - database/migrations/2025_02_15_201930_create_comments_table.php
+    - database/migrations/2025_02_15_201931_create_user_likes_comments_table.php
+    - database/migrations/2025_02_15_201932_create_contact_forms_table.php
     - app/Models/Association.php
+    - app/Models/BelongsToAssociation.php
     - app/Models/ManagesAssociation.php
     - app/Models/AssociationPhone.php
     - app/Models/MemberAssociation.php
@@ -35,14 +38,24 @@ created:
     - app/Models/Comment.php
     - app/Models/UserLikesComment.php
     - app/Models/ContactForm.php
+    - database/seeders/UserSeeder.php
     - database/seeders/AssociationSeeder.php
+    - database/seeders/BelongsToAssociationSeeder.php
+    - database/seeders/ManagesAssociationSeeder.php
+    - database/seeders/AssociationPhoneSeeder.php
+    - database/seeders/MemberAssociationSeeder.php
     - database/seeders/CategorySeeder.php
     - database/seeders/ProductSeeder.php
+    - database/seeders/UserLikesProductSeeder.php
     - database/seeders/OrderSeeder.php
+    - database/seeders/OrderContainsProductSeeder.php
     - database/seeders/CommentSeeder.php
+    - database/seeders/UserLikesCommentSeeder.php
+    - database/seeders/ContactFormSeeder.php
 models:
-    User: { name: string, email: string, email_verified_at: 'timestamp nullable', password: string, remember_token: 'string:100 nullable' }
+    User: { userName: 'string unique', name: string, email: 'string unique', password: string, admin: boolean, timestamps: timestamps }
     Association: { name: string, tax_id: 'string unique', business_name: 'string unique', address: 'string unique', email: 'string unique', timestamps: timestamps }
+    BelongsToAssociation: { user_id: 'foreign:users.id onDelete:cascade', association_id: 'id foreign:associations onDelete:cascade', primary: 'user_id, association_id' }
     ManagesAssociation: { user_id: 'foreign:users.id onDelete:cascade', association_id: 'id foreign:associations onDelete:cascade', primary: 'user_id, association_id' }
     AssociationPhone: { association_id: 'id foreign:associations onDelete:cascade', phone: 'string unique', description: 'text nullable' }
     MemberAssociation: { user_id: 'foreign:users.id onDelete:cascade', association_id: 'id foreign:associations onDelete:cascade', status: 'enum:pending,accepted,rejected', primary: 'user_id, association_id' }

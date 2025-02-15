@@ -12,6 +12,6 @@ class AssociationSeeder extends Seeder
      */
     public function run(): void
     {
-        Association::factory()->count(5)->create();
+        Association::factory()->count(50)->create();
     }
 }

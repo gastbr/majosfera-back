@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Order extends Model
+class BelongsToAssociation extends Model
 {
     use HasFactory;
 
@@ -17,9 +17,8 @@ class Order extends Model
      */
     protected $fillable = [
         'user_id',
-        'order_date',
-        'total',
-        'status',
+        'association_id',
+        'primary',
     ];
 
     /**
@@ -30,7 +29,7 @@ class Order extends Model
     protected $casts = [
         'id' => 'integer',
         'user_id' => 'integer',
-        'order_date' => 'datetime',
+        'association_id' => 'integer',
     ];
 
     public function user(): BelongsTo
@@ -38,8 +37,8 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function products()
+    public function association(): BelongsTo
     {
-        return $this->belongsToMany(Product::class)->withPivot('quantity');
+        return $this->belongsTo(Association::class);
     }
 }
