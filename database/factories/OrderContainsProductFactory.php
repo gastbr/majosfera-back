@@ -23,8 +23,8 @@ class OrderContainsProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'order_id' => Order::factory(),
-            'product_id' => Product::factory(),
+            'order_id' => Order::pluck('id')->random(),
+            'product_id' => Product::pluck('id')->random(),
             'quantity' => fake()->numberBetween(-10000, 10000),
             'primary' => fake()->word(),
         ];

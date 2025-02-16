@@ -22,7 +22,7 @@ class AssociationPhoneFactory extends Factory
     public function definition(): array
     {
         return [
-            'association_id' => Association::factory(),
+            'association_id' => Association::pluck('id')->random(),
             'phone' => fake()->phoneNumber(),
             'description' => fake()->text(),
         ];

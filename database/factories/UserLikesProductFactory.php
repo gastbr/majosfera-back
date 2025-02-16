@@ -23,8 +23,8 @@ class UserLikesProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
-            'product_id' => Product::factory(),
+            'user_id' => User::pluck('id')->random(),
+            'product_id' => Product::pluck('id')->random(),
             'primary' => fake()->word(),
         ];
     }

@@ -22,8 +22,8 @@ class ManagesAssociationFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
-            'association_id' => Association::factory(),
+            'user_id' => User::pluck('id')->random(),
+            'association_id' => Association::pluck('id')->random(),
             'primary' => fake()->word(),
         ];
     }

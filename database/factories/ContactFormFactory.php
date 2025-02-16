@@ -22,7 +22,7 @@ class ContactFormFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
+            'user_id' => User::pluck('id')->random(),
             'name' => fake()->name(),
             'email' => fake()->safeEmail(),
             'message' => fake()->text(),

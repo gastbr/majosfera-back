@@ -23,8 +23,8 @@ class CommentFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
-            'product_id' => Product::factory(),
+            'user_id' => User::pluck('id')->random(),
+            'product_id' => Product::pluck('id')->random(),
             'content' => fake()->paragraphs(3, true),
             'rating' => fake()->numberBetween(-10000, 10000),
             'date' => fake()->dateTime(),

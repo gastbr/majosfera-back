@@ -23,13 +23,13 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'association_id' => Association::factory(),
+            'association_id' => Association::pluck('id')->random(),
             'name' => fake()->name(),
             'description' => fake()->text(),
             'price' => fake()->word(),
             'stock' => fake()->numberBetween(-10000, 10000),
             'image' => fake()->word(),
-            'category_id' => Category::factory(),
+            'category_id' => Category::pluck('id')->random(),
         ];
     }
 }

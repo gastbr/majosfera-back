@@ -22,7 +22,7 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
+            'user_id' => User::pluck('id')->random(),
             'order_date' => fake()->dateTime(),
             'total' => fake()->word(),
             'status' => fake()->randomElement(["pending","paid","shipped","cancelled"]),

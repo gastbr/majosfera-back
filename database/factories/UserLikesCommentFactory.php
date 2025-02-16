@@ -23,8 +23,8 @@ class UserLikesCommentFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
-            'comment_id' => Comment::factory(),
+            'user_id' => User::pluck('id')->random(),
+            'comment_id' => Comment::pluck('id')->random(),
             'primary' => fake()->word(),
         ];
     }
