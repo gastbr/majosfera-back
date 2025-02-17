@@ -22,10 +22,10 @@ class AssociationFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'tax_id' => fake()->word(),
-            'business_name' => fake()->word(),
-            'address' => fake()->word(),
-            'email' => fake()->safeEmail(),
+            'tax_id' => fake()->unique()->word(),
+            'business_name' => fake()->unique()->word(),
+            'address' => fake()->unique()->word(),
+            'email' => fake()->unique()->safeEmail(),
         ];
     }
 }
