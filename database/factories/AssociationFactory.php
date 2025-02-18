@@ -22,9 +22,9 @@ class AssociationFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'tax_id' => fake()->unique()->word(),
-            'business_name' => fake()->unique()->word(),
-            'address' => fake()->unique()->word(),
+            'tax_id' => fake()->unique()->regexify('[0-9]{8}[A-Z]'),
+            'business_name' => ucfirst(fake()->unique()->word()),
+            'address' => 'C/ ' . fake()->streetName() . ', ' . fake()->numberBetween(1, 999),
             'email' => fake()->unique()->safeEmail(),
         ];
     }

@@ -23,8 +23,23 @@ class AssociationPhoneFactory extends Factory
     {
         return [
             'association_id' => Association::pluck('id')->random(),
-            'phone' => fake()->unique()->phoneNumber(),
-            'description' => fake()->text(),
+            'phone' => fake()->phoneNumber(),
+            'description' => fake()->randomElement([
+                'Oficina',
+                'Casa',
+                'Trabajo',
+                'Personal',
+                'Cliente',
+                'Atención al cliente',
+                'Devoluciones',
+                'Proveedor',
+                'Almacén',
+                'Soporte técnico',
+                'Info',
+                'Redes sociales',
+                'Otros',
+                'Sin especificar',
+            ]),
         ];
     }
 }

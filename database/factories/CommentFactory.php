@@ -26,7 +26,7 @@ class CommentFactory extends Factory
             'user_id' => User::pluck('id')->random(),
             'product_id' => Product::pluck('id')->random(),
             'content' => fake()->paragraphs(3, true),
-            'rating' => fake()->numberBetween(-10000, 10000),
+            'rating' => fake()->numberBetween(0, 10000),
             'date' => fake()->dateTime(),
         ];
     }
