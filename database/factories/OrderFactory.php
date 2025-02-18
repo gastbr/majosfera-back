@@ -24,8 +24,8 @@ class OrderFactory extends Factory
         return [
             'user_id' => User::pluck('id')->random(),
             'order_date' => fake()->dateTime(),
-            'total' => fake()->word(),
-            'status' => fake()->randomElement(["pending","paid","shipped","cancelled"]),
+            'total' => fake()->randomFloat(2, 10, 1000),
+            'status' => fake()->randomElement(["pending", "paid", "shipped", "cancelled"]),
         ];
     }
 }

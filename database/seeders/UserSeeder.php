@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ManagesAssociation;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -24,6 +25,11 @@ class UserSeeder extends Seeder
             'email' => 'gestor@test.com',
             'password' => bcrypt('123'),
             'admin' => false
+        ]);
+
+        ManagesAssociation::factory()->create([
+            'user_id' => 2,
+            'association_id' => 1
         ]);
 
         User::factory()->create([

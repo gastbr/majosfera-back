@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('restrict');
             $table->dateTime('order_date');
-            $table->string('total');
+            $table->decimal('total', 10, 2);
             $table->enum('status', ["pending","paid","shipped","cancelled"]);
             $table->timestamps();
         });
