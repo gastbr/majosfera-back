@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('association_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->string('price');
+            $table->decimal('price', 10, 2);
             $table->integer('stock');
             $table->string('image_url')->nullable();
             $table->foreignId('category_id')->nullable()->constrained();
