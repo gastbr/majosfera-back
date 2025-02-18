@@ -7,11 +7,31 @@ use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        Category::factory()->count(50)->create();
+        $categories = [
+            'Electrodomésticos',
+            'Muebles',
+            'Ropa',
+            'Juguetes',
+            'Alimentos',
+            'Bebidas',
+            'Cosmética',
+            'Tecnología',
+            'Papelería',
+            'Deportes',
+            'Educativo',
+            'Reciclado',
+            'Segunda mano',
+            'Salud',
+            'Animales',
+            'Hecho a mano',
+            'Cultura',
+            'Libros',
+        ];
+
+        foreach ($categories as $category) {
+            Category::firstOrCreate(['name' => $category]);
+        }
     }
 }
