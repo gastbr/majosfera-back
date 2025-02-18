@@ -25,8 +25,7 @@ class OrderContainsProductFactory extends Factory
         return [
             'order_id' => Order::pluck('id')->random(),
             'product_id' => Product::pluck('id')->random(),
-            'quantity' => fake()->numberBetween(-10000, 10000),
-            'primary' => fake()->word(),
+            'quantity' => fake()->numberBetween(-10000, 10000)
         ];
     }
 }

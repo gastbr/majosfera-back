@@ -23,8 +23,7 @@ class ManagesAssociationFactory extends Factory
     {
         return [
             'user_id' => User::pluck('id')->random(),
-            'association_id' => Association::pluck('id')->random(),
-            'primary' => fake()->word(),
+            'association_id' => Association::pluck('id')->random()
         ];
     }
 }

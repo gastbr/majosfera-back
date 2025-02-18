@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('restrict');
             $table->foreignId('comment_id')->constrained()->cascadeOnDelete();
-            $table->string('primary');
             $table->timestamps();
         });
 

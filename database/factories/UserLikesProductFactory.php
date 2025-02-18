@@ -24,8 +24,7 @@ class UserLikesProductFactory extends Factory
     {
         return [
             'user_id' => User::pluck('id')->random(),
-            'product_id' => Product::pluck('id')->random(),
-            'primary' => fake()->word(),
+            'product_id' => Product::pluck('id')->random()
         ];
     }
 }

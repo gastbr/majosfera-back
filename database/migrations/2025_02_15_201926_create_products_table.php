@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('price');
             $table->integer('stock');
-            $table->string('image')->nullable();
+            $table->string('image_url')->nullable();
             $table->foreignId('category_id')->nullable()->constrained();
             $table->timestamps();
         });

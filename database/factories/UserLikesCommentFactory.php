@@ -24,8 +24,7 @@ class UserLikesCommentFactory extends Factory
     {
         return [
             'user_id' => User::pluck('id')->random(),
-            'comment_id' => Comment::pluck('id')->random(),
-            'primary' => fake()->word(),
+            'comment_id' => Comment::pluck('id')->random()
         ];
     }
 }

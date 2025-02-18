@@ -25,8 +25,7 @@ class MemberAssociationFactory extends Factory
         return [
             'user_id' => User::pluck('id')->random(),
             'association_id' => Association::pluck('id')->random(),
-            'status' => fake()->randomElement(["pending","accepted","rejected"]),
-            'primary' => fake()->word(),
+            'status' => fake()->randomElement(["pending", "accepted", "rejected"])
         ];
     }
 }

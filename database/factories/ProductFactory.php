@@ -28,7 +28,7 @@ class ProductFactory extends Factory
             'description' => fake()->text(),
             'price' => fake()->word(),
             'stock' => fake()->numberBetween(-10000, 10000),
-            'image' => fake()->word(),
+            'image_url' => fake()->word(),
             'category_id' => Category::pluck('id')->random(),
         ];
     }
