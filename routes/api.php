@@ -8,11 +8,5 @@ use App\Http\Controllers\ProfileController;
 Route::group(['as' => 'api.'], function () {
     // Orion resource routes
     Orion::resource('users', UserController::class);
-
-    // Custom API routes
-    Route::get('custom-endpoint', function () {
-        return response()->json(['message' => 'This is a custom API endpoint']);
-    });
+    Orion::resource('products', ProfileController::class);
 });
-
-Route::middleware('auth:sanctum')->get('/products', [ProfileController::class, 'index']);
