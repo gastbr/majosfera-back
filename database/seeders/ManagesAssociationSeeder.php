@@ -13,10 +13,5 @@ class ManagesAssociationSeeder extends Seeder
     public function run(): void
     {
         ManagesAssociation::factory()->count(50)->create();
-
-        ManagesAssociation::factory()->create([
-            'user_id' => 2,
-            'association_id' => 1
-        ]);
     }
 }
