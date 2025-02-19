@@ -14,5 +14,5 @@ Route::group(['as' => 'api.'], function () {
     Orion::resource('products', ProductController::class);
     Orion::resource('categories', CategoryController::class);
     Orion::resource('associations', AssociationController::class);
-    Orion::resource('association_phones', AssociationPhoneController::class);
+    Orion::resource('association-phones', AssociationPhoneController::class);
 });

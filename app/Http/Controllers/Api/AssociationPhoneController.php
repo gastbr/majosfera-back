@@ -12,11 +12,27 @@ class AssociationPhoneController extends Controller
     /**
      * Obtener todos los teléfonos de asociaciones.
      */
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
-        $phones = AssociationPhone::all();
-        return response()->json($phones);
+        try {
+            // Verifica si se pasó 'association_id' en la solicitud
+            if ($request->has('association_id')) {
+                $phones = AssociationPhone::where('association_id', $request->association_id)->get();
+            } else {
+                $phones = AssociationPhone::all();
+            }
+
+            // Verifica si hay resultados
+            if ($phones->isEmpty()) {
+                return response()->json(['message' => 'No se encontraron teléfonos para esta asociación.'], 404);
+            }
+
+            return response()->json($phones, 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error en la consulta', 'message' => $e->getMessage()], 500);
+        }
     }
+
 
     /**
      * Obtener un teléfono específico por ID.
@@ -27,7 +43,7 @@ class AssociationPhoneController extends Controller
         if (!$phone) {
             return response()->json(['message' => 'Teléfono no encontrado'], 404);
         }
-        return response()->json($phone);
+        return response()->json($phone, 200);
     }
 
     /**
@@ -57,14 +73,13 @@ class AssociationPhoneController extends Controller
         }
 
         $validated = $request->validate([
-            'association_id' => 'sometimes|exists:associations,id',
             'phone' => 'sometimes|string|unique:association_phones,phone,' . $id,
             'description' => 'nullable|string',
         ]);
 
         $phone->update($validated);
 
-        return response()->json($phone);
+        return response()->json($phone, 200);
     }
 
     /**
@@ -78,6 +93,6 @@ class AssociationPhoneController extends Controller
         }
 
         $phone->delete();
-        return response()->json(['message' => 'Teléfono eliminado correctamente']);
+        return response()->json(['message' => 'Teléfono eliminado correctamente'], 200);
     }
 }
