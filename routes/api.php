@@ -1,12 +1,17 @@
 <?php
 
-use App\Http\Controllers\Api\ProductController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Orion\Facades\Orion;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\AssociationController;
 use App\Http\Controllers\Api\AssociationPhoneController;
+
+Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
+    return $request->user();
+});
 
 Route::group(['as' => 'api.'], function () {
     // Orion resource routes

@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\App;
 use Laravel\Sanctum\Sanctum;
 
 return [
@@ -16,20 +15,12 @@ return [
     |
     */
 
-    // ESTE VENÍA POR DEFECTO
-    /*     'stateful' => explode(',', env('SANCTUM_STATEFUL_DOMAINS', sprintf(
-        '%s%s',
-        'localhost,localhost:3000,127.0.0.1,127.0.0.1:8000,::1',
-        Sanctum::currentApplicationUrlWithPort()
-    ))), */
-
-    // ESTE ES EL QUE YO AGREGUÉ (NO SÉ SI ESTÁ BIEN)
-    /*     'stateful' => explode(',', env('SANCTUM_STATEFUL_DOMAINS', 'localhost,localhost:3000,127.0.0.1,127.0.0.1:8000')),
- */
-
-    // AHORA YO LO CAMBIÉ POR ESTE Y TAMBIEN ABAJO EN MIDDLEWARES
-    'stateful' => explode(',', env('SANCTUM_STATEFUL_DOMAINS', 'localhost,localhost:5173,localhost:5174,127.0.0.1,127.0.0.1:5173,127.0.0.1:5174', 'https://majosfera-front.pages.dev', 'https://majosfera-front.vercel.app')),
-
+    'stateful' => explode(',', env('SANCTUM_STATEFUL_DOMAINS', sprintf(
+        '%s%s%s',
+        'localhost,localhost:3000,127.0.0.1,127.0.0.1:3000,127.0.0.1:8000,::1',
+        Sanctum::currentApplicationUrlWithPort(),
+        env('FRONTEND_URL') ? ','.parse_url(env('FRONTEND_URL'), PHP_URL_HOST) : ''
+    ))),
 
     /*
     |--------------------------------------------------------------------------
