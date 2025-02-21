@@ -9,13 +9,9 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\AssociationController;
 use App\Http\Controllers\Api\AssociationPhoneController;
 
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return response()->json([
-        'id' => $request->user()->id,
-        'name' => $request->user()->name,
-        'email' => $request->user()->email,
-        // Add other user attributes as needed
-    ]);
+Route::get('/user', function (Request $request): mixed {
+    return $request->user(); 
+    dd('hola2');
 });
 
 Route::group(['as' => 'api.'], function () {
