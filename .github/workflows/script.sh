@@ -6,10 +6,6 @@ echo '==> git pull'; git restore .;git pull origin prod
 
 echo '==> composer install'; sudo -u www-data composer install
 
-echo '==> npm install'; npm install
-
-echo '==> npm run build'; npm run build
-
 echo '==> chown / chmod';
 chown -R www-data:www-data /var/www/html/majosfera-back;
 chmod -R 755 /var/www/html/majosfera-back;
