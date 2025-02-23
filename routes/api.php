@@ -10,8 +10,8 @@ use App\Http\Controllers\Api\AssociationController;
 use App\Http\Controllers\Api\AssociationPhoneController;
 
 Route::get('/user', function (Request $request): mixed {
-    return $request->user(); 
     dd('hola2');
+    //return $request->user(); 
 });
 
 Route::group(['as' => 'api.'], function () {
