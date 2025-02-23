@@ -19,13 +19,13 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [env('FRONTEND_URL')],
+    'allowed_origins' => ['https://majosfera-front.pages.dev'],
 
     'allowed_origins_patterns' => [],
 
     'allowed_headers' => ['*'],
 
-    'exposed_headers' => [],
+    'exposed_headers' => ['Set-Cookie'],
 
     'max_age' => 0,
 
