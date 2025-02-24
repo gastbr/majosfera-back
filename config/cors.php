@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [env('SANCTUM_STATEFUL_DOMAINS')],
+    'allowed_origins' => ['miriam.informaticamajada.es', 'majosfera-front.pages.dev', 'majosfera-front.vercel.app', 'localhost', 'localhost:5173', '127.0.0.1', '127.0.0.1:5173'],
 
     'allowed_origins_patterns' => [],
 
