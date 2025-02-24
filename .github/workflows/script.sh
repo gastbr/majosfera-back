@@ -16,6 +16,6 @@ echo '==> migrate / seed'; php artisan migrate:fresh --seed
 
 echo '==> artisan -:clear'; php artisan route:clear; php artisan config:clear; php artisan cache:clear; 
 
-echo '==> php reload'; systemctl reload php8.3-fpm
+echo '==> php reload'; systemctl reload php8.3-fpm; systemctl reload nginx
 
 echo '==> Deploy completed'
