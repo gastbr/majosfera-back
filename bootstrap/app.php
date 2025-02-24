@@ -20,7 +20,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'verified' => \App\Http\Middleware\EnsureEmailIsVerified::class,
         ]);
         $middleware->append(\Illuminate\Http\Middleware\HandleCors::class);
-
+        $middleware->append(\Illuminate\Cookie\Middleware\EncryptCookies::class);
+        $middleware->append(\Illuminate\Session\Middleware\StartSession::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
