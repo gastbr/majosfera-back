@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['miriam.informaticamajada.es', 'majosfera-front.pages.dev', 'majosfera-front.vercel.app', 'localhost', 'localhost:5173', '127.0.0.1', '127.0.0.1:5173'],
+    'allowed_origins' => ['https://miriam.informaticamajada.es', 'https://majosfera-front.pages.dev', 'https://majosfera-front.vercel.app', 'http://localhost', 'http://localhost:5173', 'http://127.0.0.1', 'http://127.0.0.1:5173'],
 
     'allowed_origins_patterns' => [],
 
