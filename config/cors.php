@@ -25,7 +25,7 @@ return [
 
     'allowed_headers' => ['*'],
 
-    'exposed_headers' => ['Set-Cookie'],
+    'exposed_headers' => ['*'],
 
     'max_age' => 0,
 
