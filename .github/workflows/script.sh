@@ -14,7 +14,7 @@ chmod -R 775 /var/www/html/majosfera-back/bootstrap/cache;
 
 echo '==> migrate / seed'; php artisan migrate:fresh --seed
 
-echo '==> artisan route:clear'; php artisan route:clear
+echo '==> artisan -:clear'; php artisan route:clear; php artisan config:clear; php artisan cache:clear; 
 
 echo '==> php reload'; systemctl reload php8.3-fpm
 
