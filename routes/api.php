@@ -9,9 +9,9 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\AssociationController;
 use App\Http\Controllers\Api\AssociationPhoneController;
 
-Route::get('/user', function (Request $request): mixed {
-    return $request->user(); 
-    dd('hola2');
+Route::get('/user', function (Request $request) {
+    return response()->json(['user' => 'hola']);
+    //return $request->user(); 
 });
 
 Route::group(['as' => 'api.'], function () {
