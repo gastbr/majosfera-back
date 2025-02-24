@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://majosfera-front.pages.dev'],
+    'allowed_origins' => ['https://majosfera-front.pages.dev', 'http://localhost:5173'],
 
     'allowed_origins_patterns' => [],
 
