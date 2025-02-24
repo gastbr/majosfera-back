@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\AssociationController;
 use App\Http\Controllers\Api\AssociationPhoneController;
+use App\Http\Controllers\Api\ContactController;
 
 Route::get('/user', function (Request $request) {
     return response()->json(['user' => 'hola']);
@@ -21,4 +22,5 @@ Route::group(['as' => 'api.'], function () {
     Orion::resource('categories', CategoryController::class);
     Orion::resource('associations', AssociationController::class);
     Orion::resource('association-phones', AssociationPhoneController::class);
+    Orion::resource('contact-messages', ContactController::class)->only(['store']);
 });
