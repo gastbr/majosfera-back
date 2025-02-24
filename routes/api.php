@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\AssociationController;
 use App\Http\Controllers\Api\AssociationPhoneController;
 use App\Http\Controllers\Api\ContactController;
+use App\Http\Controllers\Api\FavoriteController;
 
 Route::get('/user', function (Request $request): mixed {
     dd('hola2');
@@ -22,5 +23,6 @@ Route::group(['as' => 'api.'], function () {
     Orion::resource('categories', CategoryController::class);
     Orion::resource('associations', AssociationController::class);
     Orion::resource('association-phones', AssociationPhoneController::class);
-    Orion::resource('contact-messages', ContactController::class)->only(['store']);
+    Orion::resource('contact-messages', ContactController::class);
+    Orion::resource('favorites', FavoriteController::class);
 });
