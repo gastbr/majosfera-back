@@ -2,7 +2,7 @@ echo '==> Start deploy'
 
 echo '==> cd'; cd /var/www/html/majosfera-back
 
-echo '==> git pull'; git restore .;git pull origin prod
+echo '==> git pull'; git restore .;git pull origin miriam
 
 echo '==> composer install'; sudo -u www-data composer install
 
