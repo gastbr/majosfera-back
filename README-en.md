@@ -1,7 +1,7 @@
 [![Licencia: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Estado del Despliegue](https://github.com/gastbr/majosfera-back/actions/workflows/deploy.yml/badge.svg)](https://github.com/gastbr/majosfera-back/actions/workflows/deploy.yml)
 
-[Español] | **English** (README-es.md)
+[Español](README.md) | **English**
 
 <div align="center"><img src="https://github.com/gastbr/majosfera-front/blob/gaston/public/logo-dark-nobg.png?raw=true" alt="Logo Majosfera" width="400" /></div>
 
