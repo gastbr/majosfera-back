@@ -5,12 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -107,5 +106,21 @@ class User extends Authenticatable
     public function contactForms()
     {
         return $this->hasMany(ContactForm::class);
+    }
+
+    /**
+     * Retorna el identificador que se guardará en el JWT.
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Retorna un array de claims personalizados, si se requiere.
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }
