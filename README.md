@@ -12,8 +12,8 @@
 **Majosfera** es una tienda en línea dedicada a **asociaciones sin ánimo de lucro** que desean vender productos para financiar sus causas. La plataforma permite a las asociaciones registrar sus tiendas, gestionar productos y recibir pedidos de clientes interesados en apoyar su labor.
 
 El proyecto está dividido en dos repositorios:
-- **Backend:** [`majosfera-back`](https://github.com/tu-usuario/majosfera-back), desarrollado en **Laravel** con **Orion**.
-- **Frontend:** [`majosfera-front`](https://github.com/tu-usuario/majosfera-front), desarrollado en **React** con **Tailwind CSS**.
+- **Backend:** [`majosfera-back`](https://github.com/gastbr/majosfera-back), desarrollado en **Laravel** con **Orion**.
+- **Frontend:** [`majosfera-front`](https://github.com/gastbr/majosfera-front), desarrollado en **React** con **Tailwind CSS**.
 
 La base de datos utilizada es **MariaDB**.
 
