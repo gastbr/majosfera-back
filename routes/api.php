@@ -20,9 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return response()->json(Auth::user());
 });
 
-
-
-
 Route::group(['as' => 'api.'], function () {
     // Orion resource routes
     Orion::resource('users', UserController::class);

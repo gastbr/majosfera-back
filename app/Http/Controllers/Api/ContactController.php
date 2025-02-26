@@ -24,6 +24,6 @@ class ContactController extends Controller
 
         $contact = ContactForm::create($validatedData);
 
-        return response()->json($contact, 201);
+        return response()->json($contact);
     }
 }
