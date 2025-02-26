@@ -40,6 +40,7 @@ class Order extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Product::class)->withPivot('quantity');
+        return $this->belongsToMany(Product::class, 'order_contains_products')
+            ->withPivot('quantity'); // Esto incluirá la cantidad almacenada en la tabla pivot
     }
 }
