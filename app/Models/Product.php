@@ -21,9 +21,11 @@ class Product extends Model
         'description',
         'price',
         'stock',
-        'image',
+        'image_url',
+        'image_path', // Agregamos este campo
         'category_id',
     ];
+
 
     /**
      * The attributes that should be cast to native types.
