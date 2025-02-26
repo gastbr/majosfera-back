@@ -11,7 +11,8 @@ use App\Http\Controllers\Api\AssociationPhoneController;
 use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\FavoriteController;
 use App\Http\Controllers\Api\JWTAuthController;
-
+use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\OrderItemController;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -37,4 +38,14 @@ Route::post('/register', [JWTAuthController::class, 'register']);
 Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/logout', [JWTAuthController::class, 'logout']);
     Route::put('/user', [JWTAuthController::class, 'update']);
+});
+
+Route::group(['middleware' => 'auth:api', 'as' => 'api.'], function () {
+    // Obtiene el pedido pendiente (carrito) del usuario autenticado
+    Route::get('/orders', [OrderController::class, 'index']);
+    Route::delete('/orders/{order}/products/{product}', [OrderController::class, 'removeProduct']);
+
+    // Actualiza y elimina items del pedido (carrito)
+    Route::put('/order-items/{orderItem}', [OrderItemController::class, 'update']);
+    Route::delete('/order-items/{orderItem}', [OrderItemController::class, 'destroy']);
 });
