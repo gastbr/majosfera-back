@@ -72,7 +72,8 @@ Route::middleware(['auth:api'])->group(function () {
 
 
     // ✅ Permitir obtener favoritos de cualquier usuario por ID
-    Route::get('/favorites/{user_id}', [FavoriteController::class, 'getFavoritesByUserId']);
+    Route::middleware(['auth:api'])->get('/favorites/{user_id}', [FavoriteController::class, 'getFavoritesByUserId']);
+
 
     // ✅ Permitir eliminar favoritos de un usuario por ID y producto
     Route::delete('/favorites/{user_id}/{product_id}', [FavoriteController::class, 'removeFavoriteByUserId']);
